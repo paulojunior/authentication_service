@@ -1,0 +1,50 @@
+basePath: /
+host: localhost:8888
+info:
+  contact:
+    email: jr@live.at
+    name: Paulo Ferreira
+  description: This is a authentication API.
+  title: Swagger Authentication API
+  version: "1.0"
+paths:
+  /authenticate:
+    post:
+      consumes:
+      - application/json
+      description: Authenticates a user based on the provided credentials and generates
+        a JWT token.
+      parameters:
+      - description: User's email
+        format: email
+        in: body
+        name: email
+        required: true
+        schema:
+          type: string
+      - description: User's password
+        format: password
+        in: body
+        name: password
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: JWT token generated successfully
+          schema:
+            type: string
+        "400":
+          description: Invalid credentials
+          schema:
+            type: string
+        "500":
+          description: Internal error generating JWT token
+          schema:
+            type: string
+      summary: Authenticate user and generate JWT token
+      tags:
+      - authentication
+swagger: "2.0"
